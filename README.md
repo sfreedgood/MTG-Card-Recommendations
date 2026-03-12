@@ -1,30 +1,41 @@
-# README
+# MTG Card Recommendations (EDHREC scraper)
 
-## Overview
-This project serves as a Python playground and utility for streamlining the process of finding Magic: The Gathering cards to add to existing decks.
+A small Python playground + command-line utility that scrapes EDHREC pages to surface high-synergy card suggestions for a partial decklist.
 
-## Features
-- Easy integration with existing decks
-- Efficient searching for cards
-- User-friendly interface
+> Note: This is a personal project / playground. EDHREC is a third-party site; scraping can break if the site changes and may be subject to their Terms of Service and rate limits.
 
-## Getting Started
-To get started with the project, clone the repository and install the required dependencies:
+## What’s in here
+- `run.py` — CLI entrypoint
+- `edhrec_parser.py` — EDHREC page scraping/parsing
+- `suggestion_module.py` — consolidates parsed results into a mapping
+- `parser_utils.py`, `url_utils.py` — helpers
 
-```
-git clone https://github.com/sfreedgood/MTG-Card-Recommendations.git
-cd MTG-Card-Recommendations
+## Setup
+```bash
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
 ```
 
 ## Usage
-You can run this project by executing:
-
+### Single card
+```bash
+python run.py --card "Teferi, Master of Time"
 ```
-python main.py
+
+### CSV input
+`--csv` currently expects a comma-separated list of CSV file paths (see `run.py`).
+
+```bash
+python run.py --csv cards.csv
 ```
 
-## Notes/Disclaimer
-This project is intended for personal use and may have limitations in terms of functionality and completeness.
+The script prints JSON to stdout.
 
-## License
-Placeholder for license information.
+## Output
+The CLI prints a JSON mapping (pretty-printed) of the parsed/suggested card data.
+
+## Roadmap ideas
+- Add a real decklist parser (Moxfield/Archidekt/Deckstats export)
+- Cache HTTP responses and add polite request throttling
+- Add tests for parsing logic
