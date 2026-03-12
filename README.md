@@ -18,17 +18,20 @@ pip install -r requirements.txt
 ```
 
 ## Usage
+
 ### Single card
 ```bash
 python run.py --card "Teferi, Master of Time"
 ```
 
-### CSV input
-`--csv` currently expects a comma-separated list of CSV file paths (see `run.py`).
+### Card list (comma-separated)
+Right now `--csv` expects a *comma-separated list of card names* (not a filename). Example:
 
 ```bash
-python run.py --csv cards.csv
+python run.py --csv "Sol Ring,Arcane Signet"
 ```
+
+Tip: if you have card names quoted (like "Sol Ring","Arcane Signet"), you can usually just remove the quotes before running the command.
 
 The script prints JSON to stdout.
 
@@ -36,6 +39,7 @@ The script prints JSON to stdout.
 The CLI prints a JSON mapping (pretty-printed) of the parsed/suggested card data.
 
 ## Roadmap ideas
+- Add loading card names from a CSV file
 - Add a real decklist parser (Moxfield/Archidekt/Deckstats export)
 - Cache HTTP responses and add polite request throttling
 - Add tests for parsing logic
