@@ -28,10 +28,10 @@ python run.py --card "Teferi, Master of Time"
 Right now `--csv` expects a *comma-separated list of card names* (not a filename). Example:
 
 ```bash
-python run.py --csv "Sol Ring,Arcane Signet"
+python run.py --csv "Sol Ring","Arcane Signet"
 ```
 
-Tip: if you have card names quoted (like "Sol Ring","Arcane Signet"), you can usually just remove the quotes before running the command.
+Tip: if none of the card names contain commas, it should be safe to just quote the entire list instead of each item individually
 
 The script prints JSON to stdout.
 
